@@ -1,0 +1,52 @@
+{% extends "framework.html" %}
+{% block content %}
+  <div class = "content-section">
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <fieldset>
+        <legend>Join Today</legend>
+        <div>
+          {{ form.email.label(class="form-control-label") }}
+          {% if form.email.errors %}
+            {{ form.email(class="form-control") }}
+            <div>
+              {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.email(class="form-control") }}
+          {% endif %}
+        </div>
+        <div>
+          {{ form.password.label(class="form-control-label") }}
+          {% if form.password.errors %}
+            {{ form.password(class="form-control") }}
+            <div>
+              {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+              {% endfor %}
+            </div>
+          {% else %}
+            {{ form.password(class="form-control") }}
+          {% endif %}
+        </div>
+        <div class="">
+          {{ form.remember(class="") }}
+          {{ form.remember.label(class="") }}
+        </div>
+      </fieldset>
+      <div>
+        {{ form.submit(class="") }}
+      </div>
+      <small>
+        <a href="#">Forgot Password?</a>
+      </small>
+    </form>
+  </div>
+  <div>
+    <small>
+      Need an Account? <a href="{{ url_for('users.register') }}">Sign Up Now</a>
+    </small>
+  </div>
+{% endblock content %}
