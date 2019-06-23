@@ -21,7 +21,7 @@
   left: var(--n-post-width);
   padding: 5px;
   position: absolute;
-  transition: 0.3s;
+  transition: 0.1s;
   text-align: left;
   text-decoration: none;
   width: var(--post-width);
@@ -44,13 +44,13 @@
   background-size: cover;
   border: 2px grey solid;
   border-radius: 10px;
-  float: left;
+  display: none;
   height: var(--post-height);
   margin-bottom: 25px;
   margin-left: 25px;
   max-height: 500px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   transition: 0.4s;
   vertical-align: top;
   width: var(--post-width);
@@ -60,6 +60,8 @@
   cursor: pointer;
 }
 .wrapper-post {
+  height: auto;
   padding-top: 25px;
+  position: relative; 
   text-align: center;
 }
