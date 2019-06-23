@@ -2,27 +2,42 @@
 <html>
 <head>
   <title>Blog</title>
+  <link href="https://fonts.googleapis.com/css?family=Lora:700|Merriweather:300|Open+Sans:600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/css/theme/theme.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/framework.css">
   {% block headlinks %}{% endblock %}
 </head>
-<body>
+<body class='theme-light'>
   {% block startlinks %}{% endblock %}
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <div class="">
-          {{ message }}
+  <div class='container toolbar-main'>
+    <div class='wrapper'>
+      {% if current_user.is_authenticated %}
+        <a class='button toolbar-button' id='account' href='{{ url_for("users.account") }}'>
+          Account
+        </a>
+      {% else %}
+        <div class='button toolbar-button' id='login'>
+          Login
         </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+      {% endif %}
+    </div>
+  </div>
+  <div class='container-anti content-main'>
+    <div class='wrapper'>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
 
-  {% if current_user.is_authenticated %}
-
-  {% else %}
-
-  {% endif %}
-
-  {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   {% block endlinks %}{% endblock %}
 <body>
 </html>

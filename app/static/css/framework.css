@@ -1,0 +1,42 @@
+:root {
+  --toolbar-height: 75px;
+}
+
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+.content-main {
+  height: 100vh;
+  padding-top: var(--toolbar-height);
+}
+.toolbar-main {
+  font-family: 'Open Sans', sans-serif;
+  height: var(--toolbar-height);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1000000;
+}
+.toolbar-button {
+  display:inline-block;
+  font-size: 16px;
+  height: var(--toolbar-height);
+  line-height: var(--toolbar-height);
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  text-decoration: none;
+}
+.toolbar-button:hover {
+  border-bottom: black 10px solid;
+  cursor: pointer;
+}
+.wrapper {
+  margin: auto;
+  max-width: 1000px;
+  min-width: 500px;
+  width: 100vw;
+}

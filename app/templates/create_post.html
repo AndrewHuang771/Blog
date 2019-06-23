@@ -1,7 +1,7 @@
 {% extends "framework.html" %}
 {% block content %}
 <div class = "content-section">
-  <form method="POST" action="">
+  <form method="POST" action="" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <fieldset>
       <legend>{{ legend }}</legend>
@@ -29,6 +29,15 @@
           </div>
         {% else %}
           {{ form.content(class="form-control") }}
+        {% endif %}
+      </div>
+      <div>
+        {{ form.picture.label(class="form-control-label") }}
+        {{ form.picture(class='form-control-file') }}
+        {% if form.picture.errors %}
+          {% for error in form.picture.errors %}
+            <span class = 'text-danger'>{{ error }}</span><br>
+          {% endfor %}
         {% endif %}
       </div>
     </fieldset>

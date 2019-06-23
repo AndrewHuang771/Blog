@@ -1,28 +1,46 @@
 {% extends "framework.html" %}
 
+{% block startlinks %}
+  <link rel="stylesheet" type="text/css" href="static/css/home.css">
+{% endblock startlinks %}
+
 {% block content %}
-  {% for post in posts.items %}
-  <img src = "{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"/>
-    <div>
-      <a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-      {{ post.date_posted.strftime('%Y-%m-%d') }}
-      <a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a>
-      {{ post.content }}
-    </div>
-  {% endfor %}
-  {% for page_umn in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-    {% if page_num %}
-      {% if page_num == posts.page %}
-        <a href="{{ url_for('main.root', page=page_num) }}">{{ page_num }}</a>
+  <div class='wrapper-post'>
+    {% for post in posts.items %}
+      <a
+        class='post-regular container'
+        href="{{ url_for('posts.post', post_id=post.id) }}"
+        style="background-image:url('{{ url_for('static', filename='background_pics/' + post.image_file) }}');"
+      >
+        <div class='darkener'>
+        </div>
+        <div class='post-content' id="{{post.id}}" style="white-space: pre-wrap;"></div>
+        <script>
+          node = document.getElementById('{{post.id}}');
+          node.innerHTML = "{{ post.content }}";
+        </script>
+        <div class='post-footer container'>
+          <!-- <a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+          {{ post.date_posted.strftime('%Y-%m-%d') }} -->
+          <div class = "post-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</div>
+
+        </div>
+      </a>
+    {% endfor %}
+    {% for page_umn in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if page_num == posts.page %}
+          <a href="{{ url_for('main.root', page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a href="{{ url_for('main.root', page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
       {% else %}
-        <a href="{{ url_for('main.root', page=page_num) }}">{{ page_num }}</a>
+        ...
       {% endif %}
-    {% else %}
-      ...
-    {% endif %}
-  {% endfor %}
+    {% endfor %}
+  </div>
 {% endblock content %}
 
 {% block endlinks %}
-  <script src="myscripts.js"></script>
+  <script src="/static/js/home.js"></script>
 {% endblock endlinks %}

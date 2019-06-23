@@ -1,0 +1,17 @@
+$theme-light: (
+   container: (
+       bg: white,
+       color: black,
+       border: none,
+       box-shadow: 0 8px 12px -12px black
+   ),
+   button: (
+       bg: white,
+       color: black,
+       border-bottom-color: black
+   ),
+   container-anti: (
+       bg: #f4f8ff,
+       color: black,
+   )
+);

@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from app import db
 from app.models import Post
 from app.posts.forms import PostForm
+from app.posts.utils import save_picture
 
 posts = Blueprint('posts', __name__)
 
@@ -11,7 +12,10 @@ posts = Blueprint('posts', __name__)
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user)
+        picture_file = '/static/background_pics/default.jpg'
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+        post = Post(title=form.title.data, content=form.content.data.replace('"', '').replace("'", ""), author=current_user, image_file=picture_file)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
@@ -32,7 +36,10 @@ def update_post(post_id):
     form = PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
-        post.content = form.content.data
+        post.content = form.content.data.replace('"', '').replace("'", "")
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            post.image_file=picture_file
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('posts.post', post_id=post.id))

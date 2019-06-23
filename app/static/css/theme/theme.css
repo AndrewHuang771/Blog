@@ -1,0 +1,15 @@
+.theme-light .container {
+  background-color: white;
+  border: none;
+  box-shadow: 0 8px 12px -12px black;
+}
+.theme-light .button {
+  background-color: white;
+  color: black;
+}
+.theme-light .container-anti {
+  background-color: #f4f8ff;
+  color: black;
+}
+
+/*# sourceMappingURL=theme.css.map */
