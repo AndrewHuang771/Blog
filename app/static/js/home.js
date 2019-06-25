@@ -1,5 +1,23 @@
-const top_padding = 25;
+const top_padding = 22.5;
 const post_width = 220;
+const max_post_height = 300;
+const min_post_height = 200;
+const multipleOf = 100;
+const max_height = max_post_height * 4;
+const postsPerPage = 12;
+
+function max_element(tables) {
+  if ( tables.length === 0 ) {
+    return 0;
+  }
+  let max = tables[0];
+  for ( let i = 0; i < tables.length; i ++ ) {
+    if (tables[i] > max) {
+      max = tables[i];
+    }
+  }
+  return max;
+}
 
 function movePost(node, column, columnHeight, tables) {
   node.style.top = columnHeight + 'px';
@@ -24,18 +42,32 @@ function findShortestCol(tables) {
 
 $(document).ready(function() {
   const tables = [];
-  const numCols = Math.floor($(".wrapper-post").width()/220);
+  const numCols = Math.floor($(".wrapper-post").width()/(post_width + top_padding));
+  let j = 0;
+  let max_height = 0;
+  let firstTime = true;
   for ( let i = 0; i < numCols; i ++ ) {
     tables.push(top_padding);
   }
 
   $('.wrapper-post').children('a').each(function() {
-    this.style.height = 100*(Math.ceil(Math.random()*3+2)) + 'px';
-    let col = findShortestCol(tables);
-    movePost(this, col.idx, col.min, tables);
+    if ( j > postsPerPage - numCols - 1 ) {
+      if ( firstTime ) {
+        max_height = max_element(tables) + top_padding + min_post_height;
+        firstTime = false;
+      }
+      let col = findShortestCol(tables);
+      this.style.height = max_height - tables[col.idx] + 'px';
+      movePost(this, col.idx, col.min, tables);
+    } else {
+      this.style.height = multipleOf*(Math.ceil(Math.random()*(max_post_height/multipleOf)+1)) + 'px';
+      let col = findShortestCol(tables);
+      movePost(this, col.idx, col.min, tables);
+    }
+    j ++;
   });
 
-  //Now sort them into columns.
+  $(".content-main").css('height', (max_height + top_padding) + 'px');
 
   $(".post-regular").on('mouseenter', function() {
     $(this).children('.post-content')[0].style.left = 0 + 'px';
@@ -43,7 +75,7 @@ $(document).ready(function() {
   });
 
   $(".post-regular").on('mouseleave', function() {
-    $(this).children('.post-content')[0].style.left = -220 + 'px';
+    $(this).children('.post-content')[0].style.left = -post_width + 'px';
     $(this).children('.darkener')[0].style.opacity = 0;
   });
 });

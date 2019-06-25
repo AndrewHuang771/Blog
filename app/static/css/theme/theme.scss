@@ -14,11 +14,6 @@
                .#{$section} {
                    background-color: map-get($map, bg);
                    color: map-get($map, color);
-
-                   @if ($section != button) {
-                       height: map-get($map, height);
-                       width: map-get($map, width);
-                   }
                }
            }
        }

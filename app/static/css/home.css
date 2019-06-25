@@ -43,7 +43,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px grey solid;
-  border-radius: 10px;
   display: none;
   height: var(--post-height);
   margin-bottom: 25px;
@@ -62,6 +61,6 @@
 .wrapper-post {
   height: auto;
   padding-top: 25px;
-  position: relative; 
+  position: relative;
   text-align: center;
 }

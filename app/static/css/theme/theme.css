@@ -1,3 +1,7 @@
+.theme-light .body {
+  background-color: #f4f8ff;
+  color: white;
+}
 .theme-light .container {
   background-color: white;
   border: none;
