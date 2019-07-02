@@ -3,7 +3,10 @@
   --post-width: 220px;
   --n-post-width: -230px;
 }
-
+.current {
+  background-color: black;
+  color: white;
+}
 .darkener {
   background-color: black;
   height: 100%;
@@ -57,6 +60,15 @@
 .post-regular:hover {
   box-shadow: 0 8px 6px -6px black;
   cursor: pointer;
+}
+.page-num {
+  border: 1px solid black;
+  font-family: "Open Sans", sans-serif;
+  padding: 5px;
+}
+.page-num:hover {
+  background-color: black;
+  color: white;
 }
 .wrapper-post {
   height: auto;

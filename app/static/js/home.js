@@ -60,14 +60,18 @@ $(document).ready(function() {
       this.style.height = max_height - tables[col.idx] + 'px';
       movePost(this, col.idx, col.min, tables);
     } else {
-      this.style.height = multipleOf*(Math.ceil(Math.random()*(max_post_height/multipleOf)+1)) + 'px';
+      let height = multipleOf*(Math.ceil(Math.random()*(max_post_height/multipleOf)+1));
+      this.style.height = height + 'px';
       let col = findShortestCol(tables);
       movePost(this, col.idx, col.min, tables);
+      max_height = Math.max(max_height, tables[col.idx]);
+      console.log(max_height);
     }
     j ++;
   });
 
   $(".content-main").css('height', (max_height + top_padding) + 'px');
+  $(".page-list").css('margin-top', (max_height + top_padding) + 'px');
 
   $(".post-regular").on('mouseenter', function() {
     $(this).children('.post-content')[0].style.left = 0 + 'px';

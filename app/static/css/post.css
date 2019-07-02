@@ -1,0 +1,18 @@
+.button-panel {
+  margin-top: 25px;
+  padding: 20px;
+}
+.post-body {
+  margin-top: 25px;
+  padding: 50px;
+}
+.post-content {
+  font-family: 'Lato', serif;
+  font-size: 16px;
+  line-height: 22px;
+  white-space: pre-wrap;
+}
+.post-title {
+  font-family: 'Merriweather', serif;
+  font-size: 36px;
+}

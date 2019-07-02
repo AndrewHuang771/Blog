@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: black">
 <head>
   <title>Blog</title>
-  <link href="https://fonts.googleapis.com/css?family=Lora:700|Merriweather:300|Open+Sans:600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lora:700|Merriweather:300|Lato|Open+Sans:600&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/static/css/theme/theme.css">
   <link rel="stylesheet" type="text/css" href="/static/css/framework.css">
   {% block headlinks %}{% endblock %}
@@ -11,14 +12,13 @@
   {% block startlinks %}{% endblock %}
   <div class='container toolbar-main'>
     <div class='wrapper'>
+        <a class="fas fa-folder-open button toolbar-button" href='{{ url_for("main.root") }}' id="home"></a>
       {% if current_user.is_authenticated %}
-        <a class='button toolbar-button' id='account' href='{{ url_for("users.account") }}'>
-          Account
-        </a>
+        <a class='fas fa-file-alt button toolbar-button' id='new' href='{{ url_for("posts.new_post") }}'></a>
+        <a class='fas fa-sign-out-alt button toolbar-button' id='logout' href='{{ url_for("users.logout") }}'></a>
+        <a class='fas fa-user button toolbar-button' id='account' href='{{ url_for("users.account") }}'></a>
       {% else %}
-        <div class='button toolbar-button' id='login'>
-          Login
-        </div>
+        <a class="fas fa-folder-open button toolbar-button" href='{{ url_for("users.login") }}' id="login"></a>
       {% endif %}
     </div>
   </div>
@@ -35,6 +35,15 @@
       {% endwith %}
 
       {% block content %}{% endblock %}
+    </div>
+  </div>
+  <div class='footer container'>
+    <div class='wrapper'>
+      <div class="footer-info">
+        Read anything interesting?
+        Disagree with anything?
+        If so, please tell me! I'll be glad to talk about it.
+      </div>
     </div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

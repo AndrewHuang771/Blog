@@ -15,7 +15,7 @@ def new_post():
         picture_file = '/static/background_pics/default.jpg'
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
-        post = Post(title=form.title.data, content=form.content.data.replace('"', '').replace("'", ""), author=current_user, image_file=picture_file)
+        post = Post(title=form.title.data, content=form.content.data.replace('`', ''), author=current_user, image_file=picture_file)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
@@ -36,7 +36,7 @@ def update_post(post_id):
     form = PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
-        post.content = form.content.data.replace('"', '').replace("'", "")
+        post.content = form.content.data.replace('`', '')
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             post.image_file=picture_file

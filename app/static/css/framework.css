@@ -1,7 +1,9 @@
 :root {
   --toolbar-height: 75px;
 }
-
+html {
+  background-color:black;
+}
 body {
   margin: 0;
 }
@@ -13,6 +15,18 @@ a {
   height: 100vh;
   padding-top: var(--toolbar-height);
 }
+.footer {
+  height: 200px;
+  width: 100%;
+}
+.footer-info {
+  float: right;
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  padding: 25px;
+  text-align: right;
+  white-space: pre-wrap;
+}
 .toolbar-main {
   font-family: 'Open Sans', sans-serif;
   height: var(--toolbar-height);
@@ -23,7 +37,7 @@ a {
 }
 .toolbar-button {
   display:inline-block;
-  font-size: 16px;
+  font-size: 25px;
   height: var(--toolbar-height);
   line-height: var(--toolbar-height);
   padding-left: 10px;
@@ -32,12 +46,17 @@ a {
   text-decoration: none;
 }
 .toolbar-button:hover {
-  border-bottom: black 10px solid;
   cursor: pointer;
 }
 .wrapper {
   margin: auto;
-  max-width: 1000px;
+  max-width: 1500px;
   min-width: 500px;
   width: 100vw;
+}
+#account {
+  float: right;
+}
+#logout {
+  float: right;
 }
