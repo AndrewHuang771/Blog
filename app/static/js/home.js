@@ -70,7 +70,7 @@ $(document).ready(function() {
     j ++;
   });
 
-  $(".content-main").css('height', (max_height + top_padding) + 'px');
+  $(".content-main").css('height', (max_height + top_padding*5) + 'px');
   $(".page-list").css('margin-top', (max_height + top_padding) + 'px');
 
   $(".post-regular").on('mouseenter', function() {

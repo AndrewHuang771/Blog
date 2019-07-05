@@ -12,12 +12,16 @@ a {
   color: black;
 }
 .content-main {
-  height: 100vh;
+  padding-bottom: 25px;
   padding-top: var(--toolbar-height);
 }
 .footer {
   height: 200px;
-  width: 100%;
+  left: 0;
+  max-width:100%;
+  position: absolute;
+  transform: translateY(25px);
+  width: calc(100vw);
 }
 .footer-info {
   float: right;
@@ -25,7 +29,20 @@ a {
   font-size: 15px;
   padding: 25px;
   text-align: right;
+  width: 20%;
   white-space: pre-wrap;
+}
+.search {
+  height: calc(var(--toolbar-height) / 2);
+  padding-left: 15px;
+  width: 100%;
+}
+.search-form {
+  left: 50%;
+  position: fixed;
+  top: calc(var(--toolbar-height) / 5);
+  width: 50%;
+  transform: translateX(-50%);
 }
 .toolbar-main {
   font-family: 'Open Sans', sans-serif;
@@ -58,5 +75,11 @@ a {
   float: right;
 }
 #logout {
+  float: right;
+}
+#github {
+  float: right;
+}
+#linkedin {
   float: right;
 }

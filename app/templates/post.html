@@ -6,16 +6,17 @@
 
 {% block content %}
   <div class="post-body container">
-    <!-- <img class="" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"> -->
-    <div class="media-body">
-      <div class="article-metadata">
-      </div>
-      <div class="post-title">{{ post.title }}</div>
-      <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+      <!-- <div
+        class='post-background'
+        style="background-image:url('{{ url_for('static', filename='background_pics/' + post.image_file) }}');"
+      > -->
+        <div class="post-title">{{ post.title }}</div>
+        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
 
-      <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+      <!-- </div> -->
+
       <p id = "post-content" class="post-content"></p>
-    </div>
   </div>
   {% if post.author == current_user %}
   <div class='button-panel container'>

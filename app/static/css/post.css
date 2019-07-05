@@ -2,14 +2,23 @@
   margin-top: 25px;
   padding: 20px;
 }
+.post-background {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+  position:absolute;
+  transform: translate(-50px, -50px);
+  width: 100%;
+}
 .post-body {
   margin-top: 25px;
   padding: 50px;
+  position: relative;
 }
 .post-content {
   font-family: 'Lato', serif;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 20px;
+  line-height: 32px;
   white-space: pre-wrap;
 }
 .post-title {

@@ -12,7 +12,10 @@
   {% block startlinks %}{% endblock %}
   <div class='container toolbar-main'>
     <div class='wrapper'>
-        <a class="fas fa-folder-open button toolbar-button" href='{{ url_for("main.root") }}' id="home"></a>
+      <form class="search-form" onsubmit="var value = document.getElementById('search').value; window.location.href = '/?page=1&search=' + value; return false;">
+        <input class="search" type="text" id='search' placeholder="Search for posts by title">
+      </form>
+      <a class="fas fa-folder-open button toolbar-button" href='{{ url_for("main.root") }}' id="home"></a>
       {% if current_user.is_authenticated %}
         <a class='fas fa-file-alt button toolbar-button' id='new' href='{{ url_for("posts.new_post") }}'></a>
         <a class='fas fa-sign-out-alt button toolbar-button' id='logout' href='{{ url_for("users.logout") }}'></a>
@@ -35,17 +38,26 @@
       {% endwith %}
 
       {% block content %}{% endblock %}
-    </div>
-  </div>
-  <div class='footer container'>
-    <div class='wrapper'>
-      <div class="footer-info">
-        Read anything interesting?
-        Disagree with anything?
-        If so, please tell me! I'll be glad to talk about it.
+      <div class='footer container'>
+        <a class="fab fa-github	button toolbar-button" href='https://github.com/AndrewHuang771' id="github"></a>
+        <a class="fab fa-linkedin button toolbar-button" href='https://www.linkedin.com/in/andrew-yifeng-huang/' id="linkedin"></a>
+        <div class="footer-info">
+          Read anything interesting?
+          Disagree with anything?
+          You can talk to me at ahuang773@gmail.com
+        </div>
+        <div class="footer-info">
+          Strands:
+        </div>
+        <div class="footer-info">
+          New to the blog?
+          Read one of these to get started:
+
+        </div>
       </div>
     </div>
   </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   {% block endlinks %}{% endblock %}
 <body>
