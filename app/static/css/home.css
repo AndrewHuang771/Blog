@@ -1,10 +1,10 @@
 :root {
   --post-height: 300px;
-  --post-width: 220px;
-  --n-post-width: -230px;
+  --post-width: 440px;
+  --n-post-width: -450px;
 }
 .current {
-  background-color: black;
+  background-color: #394053;
   color: white;
 }
 .darkener {
@@ -15,6 +15,12 @@
   transition: 0.3s;
   width: 100%;
   z-index: 5;
+}
+.fab {
+  transition: 0.3s;
+}
+.fab:hover {
+  color: #0ce;
 }
 .post-content {
   color: white;
@@ -46,6 +52,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px grey solid;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   display: none;
   height: var(--post-height);
   margin-bottom: 25px;
@@ -53,21 +61,21 @@
   max-height: 500px;
   overflow: hidden;
   position: absolute;
-  transition: 0.4s;
   vertical-align: top;
   width: var(--post-width);
 }
 .post-regular:hover {
-  box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   cursor: pointer;
+  filter: none;
 }
 .page-num {
-  border: 1px solid black;
+  border: 1px solid #394053;
   font-family: "Open Sans", sans-serif;
   padding: 5px;
 }
 .page-num:hover {
-  background-color: black;
+  background-color: #394053;
   color: white;
 }
 .wrapper-post {

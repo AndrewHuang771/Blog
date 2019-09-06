@@ -1,5 +1,5 @@
 const top_padding = 22.5;
-const post_width = 220;
+const post_width = 440;
 const max_post_height = 300;
 const min_post_height = 200;
 const multipleOf = 100;
@@ -42,7 +42,8 @@ function findShortestCol(tables) {
 
 $(document).ready(function() {
   const tables = [];
-  const numCols = Math.floor($(".wrapper-post").width()/(post_width + top_padding));
+  const numCols = isMobile || Math.floor($(".wrapper-post").width()/(post_width + top_padding));
+  const leftOverSpace = $(".wrapper-post").width() - numCols*(post_width + top_padding) - top_padding;
   let j = 0;
   let max_height = 0;
   let firstTime = true;
@@ -65,13 +66,13 @@ $(document).ready(function() {
       let col = findShortestCol(tables);
       movePost(this, col.idx, col.min, tables);
       max_height = Math.max(max_height, tables[col.idx]);
-      console.log(max_height);
     }
     j ++;
   });
 
   $(".content-main").css('height', (max_height + top_padding*5) + 'px');
   $(".page-list").css('margin-top', (max_height + top_padding) + 'px');
+  $(".post-regular").css("transform", "translateX(" + leftOverSpace/2 + "px)");
 
   $(".post-regular").on('mouseenter', function() {
     $(this).children('.post-content')[0].style.left = 0 + 'px';

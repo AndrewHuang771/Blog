@@ -3,6 +3,14 @@ $theme-light: (
     bg: #f4f8ff,
     color: white
   ),
+  themed: (
+      bg: white,
+      color: black
+  ),
+  themed-inverse: (
+      bg: #394053,
+      color: white
+  ),
    container: (
        bg: white,
        color: black,
@@ -11,11 +19,19 @@ $theme-light: (
    ),
    button: (
        bg: white,
-       color: black,
+       color: #394053,
        border-bottom-color: black
    ),
    container-anti: (
-       bg: #f4f8ff,
+       bg: white,
        color: black,
+   ),
+   container-inverse: (
+       bg: #394053,
+       color: #FBFBFF,
+   ),
+   container-inverse-1: (
+       bg: #394053,
+       color: #040F16,
    )
 );

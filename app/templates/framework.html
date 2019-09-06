@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html style="background-color: black">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="mobile-web-app-capable" content="yes">
   <title>Blog</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lora:700|Merriweather:300|Lato|Open+Sans:600&display=swap" rel="stylesheet">
@@ -25,7 +29,7 @@
       {% endif %}
     </div>
   </div>
-  <div class='container-anti content-main'>
+  <div class='container content-main'>
     <div class='wrapper'>
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -38,27 +42,30 @@
       {% endwith %}
 
       {% block content %}{% endblock %}
-      <div class='footer container'>
-        <a class="fab fa-github	button toolbar-button" href='https://github.com/AndrewHuang771' id="github"></a>
-        <a class="fab fa-linkedin button toolbar-button" href='https://www.linkedin.com/in/andrew-yifeng-huang/' id="linkedin"></a>
-        <div class="footer-info">
-          Read anything interesting?
-          Disagree with anything?
-          You can talk to me at ahuang773@gmail.com
-        </div>
-        <div class="footer-info">
-          Strands:
-        </div>
-        <div class="footer-info">
-          New to the blog?
-          Read one of these to get started:
+      <div class='footer container-inverse'>
+        <div class="wrapper">
+          <a class="fab fa-github	container-inverse toolbar-button" href='https://github.com/AndrewHuang771' id="github"></a>
+          <a class="fab fa-linkedin container-inverse toolbar-button" href='https://www.linkedin.com/in/andrew-yifeng-huang/' id="linkedin"></a>
+          <div class="footer-info">
+            Read anything interesting?
+            Disagree with anything?
+            You can talk to me at ahuang773@gmail.com
+          </div>
+          <div class="footer-info">
+            Strands:
+          </div>
+          <div class="footer-info">
+            New to the blog?
+            Read one of these to get started:
 
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/static/js/page_functions.js"></script>
   {% block endlinks %}{% endblock %}
 <body>
 </html>

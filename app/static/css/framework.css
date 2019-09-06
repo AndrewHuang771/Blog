@@ -1,6 +1,7 @@
 :root {
   --toolbar-height: 75px;
 }
+
 html {
   background-color:black;
 }
@@ -16,6 +17,8 @@ a {
   padding-top: var(--toolbar-height);
 }
 .footer {
+  background-color: black;
+  color: white;
   height: 200px;
   left: 0;
   max-width:100%;
@@ -24,11 +27,12 @@ a {
   width: calc(100vw);
 }
 .footer-info {
-  float: right;
+  float: left;
   font-family: "Open Sans", sans-serif;
-  font-size: 15px;
-  padding: 25px;
-  text-align: right;
+  font-size: 13px;
+  margin-right: 10%;
+  padding-top: 25px;
+  text-align: left;
   width: 20%;
   white-space: pre-wrap;
 }
@@ -68,8 +72,8 @@ a {
 .wrapper {
   margin: auto;
   max-width: 1500px;
-  min-width: 500px;
-  width: 100vw;
+  /*min-width: 500px;*/
+  /*width: 100vw;*/
 }
 #account {
   float: right;
@@ -77,9 +81,26 @@ a {
 #logout {
   float: right;
 }
-#github {
+/*#github {
   float: right;
 }
 #linkedin {
   float: right;
+}
+*/
+
+/* Smartphones ----------- */
+@media only screen and (max-width: 760px) {
+  #account {
+    display: none;
+  }
+  #logout {
+    display: none;
+  }
+  .search-form {
+    left: 65%;
+  }
+  .footer-info {
+    display: none;
+  }
 }

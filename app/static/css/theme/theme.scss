@@ -8,7 +8,7 @@
                .container {
                    background-color: map-get($map, bg);
                    border: map-get($map, border);
-                   box-shadow: map-get($map, box-shadow);
+                   // box-shadow: map-get($map, box-shadow);
                }
            } @else {
                .#{$section} {
