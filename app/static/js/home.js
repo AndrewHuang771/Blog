@@ -61,7 +61,7 @@ $(document).ready(function() {
       this.style.height = max_height - tables[col.idx] + 'px';
       movePost(this, col.idx, col.min, tables);
     } else {
-      let height = multipleOf*(Math.ceil(Math.random()*(max_post_height/multipleOf)+1));
+      let height = multipleOf*(Math.random()*(max_post_height/multipleOf)+2);
       this.style.height = height + 'px';
       let col = findShortestCol(tables);
       movePost(this, col.idx, col.min, tables);
@@ -75,12 +75,40 @@ $(document).ready(function() {
   $(".post-regular").css("transform", "translateX(" + leftOverSpace/2 + "px)");
 
   $(".post-regular").on('mouseenter', function() {
-    $(this).children('.post-content')[0].style.left = 0 + 'px';
-    $(this).children('.darkener')[0].style.opacity = 0.3;
+    // $(this).children('.post-content')[0].style.left = 0 + 'px';
+    //$(this).children('.darkener')[0].style.opacity = 0.3;
   });
 
-  $(".post-regular").on('mouseleave', function() {
-    $(this).children('.post-content')[0].style.left = -post_width + 'px';
-    $(this).children('.darkener')[0].style.opacity = 0;
+  // $(".post-regular").on('mouseleave', function() {
+  //   $(this).children('.post-content')[0].style.left = -post_width + 'px';
+  //   $(this).children('.darkener')[0].style.opacity = 0;
+  // });
+
+  let fonts = [
+    'Open Sans, sans-serif',
+    'Chilanka, cursive',
+    'Playfair Display, serif',
+    'Bitter, serif',
+    'Abel, sans-serif',
+    'Source Code Pro, monospace',
+    'Courgette, cursive',
+    'Cormorant Garamond, serif',
+  ];
+
+  let fontSizes = [
+    20,
+    60,
+    200,
+    300,
+    500,
+    30,
+  ]
+
+  $('.post-content').each(function() {
+    this.style.fontFamily = fonts[Math.floor(Math.random()*(fonts.length - 1))];
+    let fontSize = fontSizes[Math.floor(Math.random()*(fontSizes.length - 1))];
+    this.style.fontSize = fontSize + 'px';
+    this.style.lineHeight = fontSize*1.6 + 'px';
   });
+
 });

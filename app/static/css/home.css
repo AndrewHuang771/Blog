@@ -10,7 +10,7 @@
 .darkener {
   background-color: black;
   height: 100%;
-  opacity: 0;
+  opacity: 0.3;
   position: absolute;
   transition: 0.3s;
   width: 100%;
@@ -27,7 +27,8 @@
   font-size: 20px;
   font-family: 'Merriweather' serif;
   height: var(--post-height);
-  left: var(--n-post-width);
+  //left: var(--n-post-width);
+  line-height: 28px;
   padding: 5px;
   position: absolute;
   transition: 0.1s;

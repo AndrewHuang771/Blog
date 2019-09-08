@@ -8,6 +8,9 @@
   <title>Blog</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Lora:700|Merriweather:300|Lato|Open+Sans:600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/static/css/theme/theme.css">
   <link rel="stylesheet" type="text/css" href="/static/css/framework.css">
   {% block headlinks %}{% endblock %}
@@ -19,13 +22,28 @@
       <form class="search-form" onsubmit="var value = document.getElementById('search').value; window.location.href = '/?page=1&search=' + value; return false;">
         <input class="search" type="text" id='search' placeholder="Search for posts by title">
       </form>
-      <a class="fas fa-folder-open button toolbar-button" href='{{ url_for("main.root") }}' id="home"></a>
+      <a class="fas fa-home button toolbar-button" href='{{ url_for("main.root") }}' id="home"></a>
+      <div class="mdl-tooltip" data-mdl-for="home">
+        Home
+      </div>
       {% if current_user.is_authenticated %}
         <a class='fas fa-file-alt button toolbar-button' id='new' href='{{ url_for("posts.new_post") }}'></a>
+        <div class="mdl-tooltip" data-mdl-for="new">
+          New Post
+        </div>
         <a class='fas fa-sign-out-alt button toolbar-button' id='logout' href='{{ url_for("users.logout") }}'></a>
+        <div class="mdl-tooltip" data-mdl-for="logout">
+          Logout
+        </div>
         <a class='fas fa-user button toolbar-button' id='account' href='{{ url_for("users.account") }}'></a>
+        <div class="mdl-tooltip" data-mdl-for="account">
+          Account
+        </div>
       {% else %}
-        <a class="fas fa-folder-open button toolbar-button" href='{{ url_for("users.login") }}' id="login"></a>
+<!--         <a class="fas fa-user button toolbar-button" href='{{ url_for("users.login") }}' id="login"></a>
+        <div class="mdl-tooltip" data-mdl-for="login">
+          Login
+        </div> -->
       {% endif %}
     </div>
   </div>
