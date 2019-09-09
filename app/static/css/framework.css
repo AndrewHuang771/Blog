@@ -12,6 +12,17 @@ a {
   text-decoration: none;
   color: black;
 }
+.background {
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(25px);
+  height: 100%;
+  opacity: 0;
+  position:absolute;
+  transition: 0.3s;
+  width: 100%;
+}
 .content-main {
   padding-bottom: 25px;
   padding-top: var(--toolbar-height);

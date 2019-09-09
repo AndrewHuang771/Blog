@@ -71,22 +71,35 @@ $(document).ready(function() {
   });
 
   $(".content-main").css('height', (max_height + top_padding*5) + 'px');
+  $(".background").css('height', (max_height + top_padding*5) + 'px');
   $(".page-list").css('margin-top', (max_height + top_padding) + 'px');
   $(".post-regular").css("transform", "translateX(" + leftOverSpace/2 + "px)");
 
+
+  let timeout;
   $(".post-regular").on('mouseenter', function() {
+    clearInterval(timeout);
+    $(".background").css("background-image", this.style.backgroundImage);
+    $(".background").css("opacity", 0.85);
+    $(".post-regular").css("opacity", 0.35);
+    this.style.opacity = 1;
     // $(this).children('.post-content')[0].style.left = 0 + 'px';
     //$(this).children('.darkener')[0].style.opacity = 0.3;
   });
 
-  // $(".post-regular").on('mouseleave', function() {
-  //   $(this).children('.post-content')[0].style.left = -post_width + 'px';
-  //   $(this).children('.darkener')[0].style.opacity = 0;
-  // });
+  $(".post-regular").on('mouseleave', function() {
+    timeout = setTimeout(function() {
+      $(".background").css("background-image", '');
+    }, 300);
+    $(".background").css("opacity", 0);
+    $(".post-regular").css("opacity", 1);
+    // $(this).children('.post-content')[0].style.left = -post_width + 'px';
+    // $(this).children('.darkener')[0].style.opacity = 0;
+  });
 
   let fonts = [
     'Open Sans, sans-serif',
-    'Chilanka, cursive',
+    'Kaushan Script, cursive',
     'Playfair Display, serif',
     'Bitter, serif',
     'Abel, sans-serif',
@@ -96,10 +109,9 @@ $(document).ready(function() {
   ];
 
   let fontSizes = [
-    20,
+    30,
     60,
     200,
-    300,
     500,
     30,
   ]
@@ -108,7 +120,11 @@ $(document).ready(function() {
     this.style.fontFamily = fonts[Math.floor(Math.random()*(fonts.length - 1))];
     let fontSize = fontSizes[Math.floor(Math.random()*(fontSizes.length - 1))];
     this.style.fontSize = fontSize + 'px';
-    this.style.lineHeight = fontSize*1.6 + 'px';
+    if ( fontSize < 200 ) {
+      this.style.lineHeight = fontSize*1.5 + 'px';
+    } else {
+      this.style.lineHeight = fontSize*1.15 + 'px';
+    }
   });
 
 });

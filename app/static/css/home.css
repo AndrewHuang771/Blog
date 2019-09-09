@@ -74,6 +74,7 @@
   border: 1px solid #394053;
   font-family: "Open Sans", sans-serif;
   padding: 5px;
+  z-index: 5;
 }
 .page-num:hover {
   background-color: #394053;
