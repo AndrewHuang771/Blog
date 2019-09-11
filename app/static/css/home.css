@@ -3,6 +3,10 @@
   --post-width: 440px;
   --n-post-width: -450px;
 }
+.circle {
+  border-radius: 50%;
+  position: absolute;
+}
 .current {
   background-color: #394053;
   color: white;
@@ -21,6 +25,21 @@
 }
 .fab:hover {
   color: #0ce;
+}
+.intro-panel {
+  position:absolute;
+  top: 150px;
+  left: 10%;
+  right: 10%;
+  background-color: red;
+  height: 75vh;
+  z-index: 100;
+}
+.large-font {
+  font-size: 660px;
+  font-family: Kaushan Script, cursive;
+  position:absolute;
+  transform: translate(-4%, -80%);
 }
 .post-content {
   color: white;
@@ -64,6 +83,7 @@
   position: absolute;
   vertical-align: top;
   width: var(--post-width);
+  z-index: 100;
 }
 .post-regular:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -80,9 +100,54 @@
   background-color: #394053;
   color: white;
 }
+/*.wrapper-about {
+  overflow-x: hidden;
+  overflow-y: visible;
+  position:relative;
+  width: 100vw;
+  max-width: 100%;
+}*/
 .wrapper-post {
   height: auto;
   padding-top: 25px;
   position: relative;
   text-align: center;
+}
+@media only screen and (max-width: 760px) {
+  .wrapper-about {
+    display:none;
+  }
+  .circle {
+    display:none;
+  }
+  .post-regular {
+    left: 82px;
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+.demo-card-wide {
+  height: 100%;
+
+}
+
+.demo-card-wide.mdl-card {
+  width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 100%;
+  background-color: #EDCB96;
+  background: linear-gradient(90deg, rgba(237,203,150,1) 0%, rgba(247,196,165,1) 48%, rgba(96,87,112,1) 100%);
+  position: relative;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+.mdl-card--border {
+  z-index: 50;
+}
+.mdl-card__supporting-text {
+  z-index: 50;
 }

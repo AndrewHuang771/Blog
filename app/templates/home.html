@@ -6,41 +6,63 @@
 {% endblock startlinks %}
 
 {% block content %}
-  <div class='wrapper-post'>
-    {% for post in posts.items %}
-      <a
-        class='post-regular container'
-        href="{{ url_for('posts.post', post_id=post.id) }}"
-        style="background-image:url('{{ url_for('static', filename='background_pics/' + post.image_file) }}');"
-      >
-        <div class='darkener'>
-        </div>
-        <div class='post-content' id="{{post.id}}" style="white-space: pre-wrap;"></div>
-        <script>
-          node = document.getElementById('{{post.id}}');
-          node.innerHTML = `{{ post.content }}`;
-        </script>
-        <div class='post-footer themed'>
-          <!-- <a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
-          {{ post.date_posted.strftime('%Y-%m-%d') }} -->
-          <div class = "post-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</div>
-
-        </div>
-      </a>
-    {% endfor %}
+  <div class='intro-panel'>
+    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"><span class='large-font'>Blog</span></h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        I'm Andrew, and welcome to my blog
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+          Start Reading
+        </a>
+      </div>
+      <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+          <i class="material-icons">share</i>
+        </button>
+      </div>
+    </div>
   </div>
-  <div class='page-list'>
-    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
-      {% if page_num %}
-        {% if page_num == posts.page %}
-          <a href="{{ url_for('main.root', page=page_num) }}" class="page-num current">{{ page_num }}</a>
+  <div class='wrapper'>
+    <div class='wrapper-post'>
+      {% for post in posts.items %}
+        <a
+          class='post-regular container'
+          href="{{ url_for('posts.post', post_id=post.id) }}"
+          style="background-image:url('{{ url_for('static', filename='background_pics/' + post.image_file) }}');"
+        >
+          <div class='darkener'>
+          </div>
+          <div class='post-content' id="{{post.id}}" style="white-space: pre-wrap;"></div>
+          <script>
+            node = document.getElementById('{{post.id}}');
+            node.innerHTML = `{{ post.content }}`;
+          </script>
+          <div class='post-footer themed'>
+            <!-- <a href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+            {{ post.date_posted.strftime('%Y-%m-%d') }} -->
+            <div class = "post-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</div>
+
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class='page-list'>
+      {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+        {% if page_num %}
+          {% if page_num == posts.page %}
+            <a href="{{ url_for('main.root', page=page_num) }}" class="page-num current">{{ page_num }}</a>
+          {% else %}
+            <a href="{{ url_for('main.root', page=page_num) }}" class="page-num">{{ page_num }}</a>
+          {% endif %}
         {% else %}
-          <a href="{{ url_for('main.root', page=page_num) }}" class="page-num">{{ page_num }}</a>
+          ...
         {% endif %}
-      {% else %}
-        ...
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 {% endblock content %}
 

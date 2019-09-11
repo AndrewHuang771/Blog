@@ -5,6 +5,7 @@ const min_post_height = 200;
 const multipleOf = 100;
 const max_height = max_post_height * 4;
 const postsPerPage = 12;
+const topOffset = window.innerHeight;
 
 function max_element(tables) {
   if ( tables.length === 0 ) {
@@ -20,8 +21,11 @@ function max_element(tables) {
 }
 
 function movePost(node, column, columnHeight, tables) {
-  node.style.top = columnHeight + 'px';
+  node.style.top = topOffset + columnHeight + 'px';
   node.style.left = (column * (post_width + top_padding)) + 'px';
+  if ( isMobile ) {
+    node.style.left = '82px';
+  }
   node.style.display = 'inline-block';
   tables[column] += parseInt(node.style.height.substr(0, node.style.height.length - 2)) + top_padding;
 }
@@ -70,16 +74,17 @@ $(document).ready(function() {
     j ++;
   });
 
-  $(".content-main").css('height', (max_height + top_padding*5) + 'px');
-  $(".background").css('height', (max_height + top_padding*5) + 'px');
-  $(".page-list").css('margin-top', (max_height + top_padding) + 'px');
+  $(".content-main").css('height', (topOffset + max_height + top_padding*5 + 150) + 'px');
+  $(".background").css('height', (topOffset + max_height + top_padding*5) + 'px');
+  $(".page-list").css('margin-top', (topOffset + max_height + top_padding) + 'px');
   $(".post-regular").css("transform", "translateX(" + leftOverSpace/2 + "px)");
-
+  //$(".wrapper-about").css('height', (max_height + top_padding*5) + 'px');
 
   let timeout;
   $(".post-regular").on('mouseenter', function() {
     clearInterval(timeout);
-    $(".background").css("background-image", this.style.backgroundImage);
+    $(".content-main").css("background-color", "transparent");
+    //$(".background").css("background-image", this.style.backgroundImage);
     $(".background").css("opacity", 0.85);
     $(".post-regular").css("opacity", 0.35);
     this.style.opacity = 1;
@@ -109,12 +114,17 @@ $(document).ready(function() {
   ];
 
   let fontSizes = [
-    30,
-    60,
+    0,
+    0,
     200,
     500,
     30,
   ]
+
+  setInterval(function() {
+    $(".large-font").css("font-family", fonts[Math.floor(Math.random()*(fonts.length - 1))]);
+  }, 1000);
+  
 
   $('.post-content').each(function() {
     this.style.fontFamily = fonts[Math.floor(Math.random()*(fonts.length - 1))];
@@ -126,5 +136,84 @@ $(document).ready(function() {
       this.style.lineHeight = fontSize*1.15 + 'px';
     }
   });
+
+  let circles = [
+    {
+      color: '#4D4861',
+      left: '70vh',
+      top: '-50vh',
+      radius: '200vh',
+      zIndex: 0,
+    },
+    // {
+    //   color: '#605770',
+    //   left: '67%',
+    //   top: '100px',
+    //   radius: '40vh',
+    //   zIndex: 200,
+    // },
+    // {
+    //   color: '#605770',
+    //   left: '80%',
+    //   top: '35vh',
+    //   radius: '20vh',
+    //   zIndex: 200,
+    // },
+    // {
+    //   color: '#605770',
+    //   left: '80%',
+    //   top: '130px',
+    //   radius: '30vh',
+    //   zIndex: 200,
+    // },
+    // {
+    //   color: '#605770',
+    //   left: '70%',
+    //   top: '570px',
+    //   radius: '20vh',
+    //   zIndex: 200,
+    // },
+    // {
+    //   color: '#605770',
+    //   left: '45%',
+    //   top: '280px',
+    //   radius: '30vh',
+    //   zIndex: 200,
+    // },
+    // {
+    //   color: '#605770',
+    //   left: '85%',
+    //   top: '770px',
+    //   radius: '20vh',
+    //   zIndex: 200,
+    // },
+    {
+      color: '#605770',
+      left: '75vh',
+      top: '-45vh',
+      radius: '190vh',
+      zIndex: 1,
+    },
+    {
+      color: '#F7C4A5',
+      left: '-50vh',
+      top: '155vh',
+      radius: '90vh',
+      zIndex: 0,
+    },
+  ];
+
+  for (let i = 0; i < circles.length; i++) {
+    $circle = $('<div>').addClass('circle');
+    $circle.css({
+      'left': circles[i].left,
+      'top': circles[i].top,
+      'background': circles[i].color,
+      'height': circles[i].radius,
+      'width': circles[i].radius,
+      'z-index': circles[i].zIndex,
+    });
+    $('.content-main').append($circle);
+  }
 
 });

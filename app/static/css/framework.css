@@ -3,7 +3,7 @@
 }
 
 html {
-  background-color:black;
+  background-color: white;
 }
 body {
   margin: 0;
@@ -22,13 +22,16 @@ a {
   position:absolute;
   transition: 0.3s;
   width: 100%;
+  z-index: -1;
 }
 .content-main {
   padding-bottom: 25px;
   padding-top: var(--toolbar-height);
+  position:relative;
+  overflow: hidden;
 }
 .fas {
-  color: #394053;
+  color: #605770 !important;
 }
 .footer {
   background-color: black;
@@ -51,6 +54,7 @@ a {
   white-space: pre-wrap;
 }
 .search {
+  //background: linear-gradient(90deg, rgba(237,203,150,1) 0%, rgba(247,196,165,1) 48%, rgba(96,87,112,1) 100%);
   height: calc(var(--toolbar-height) / 2);
   padding-left: 15px;
   width: 100%;
@@ -117,5 +121,9 @@ a {
   }
   .footer-info {
     display: none;
+  }
+  .wrapper {
+    max-width: 100vw;
+    width: 100vw;
   }
 }

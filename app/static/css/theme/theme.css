@@ -7,7 +7,7 @@
   color: black;
 }
 .theme-light .themed-inverse {
-  background-color: #394053;
+  background-color: #4D4861;
   color: white;
 }
 .theme-light .container {
@@ -16,18 +16,18 @@
 }
 .theme-light .button {
   background-color: white;
-  color: #394053;
+  color: #4D4861;
 }
 .theme-light .container-anti {
   background-color: white;
   color: black;
 }
 .theme-light .container-inverse {
-  background-color: #394053;
+  background-color: #4D4861;
   color: #FBFBFF;
 }
 .theme-light .container-inverse-1 {
-  background-color: #394053;
+  background-color: #4D4861;
   color: #040F16;
 }
 
