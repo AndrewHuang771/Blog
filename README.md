@@ -1,5 +1,5 @@
 # Blog
-andrewyh.com
+https://www.andrewyh.com
 
 How to push changes onto cloud:
 1. Git push into this repo from local.
