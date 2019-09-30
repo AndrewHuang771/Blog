@@ -3,6 +3,14 @@
   --post-width: 440px;
   --n-post-width: -450px;
 }
+.about-me {
+  height: 100%;
+  width: 100%;
+  background-color: #4D4861;
+  transform: translate(100%, 0px);
+  position: absolute;
+  transition: 0.5s;
+}
 .circle {
   border-radius: 50%;
   position: absolute;
@@ -25,6 +33,12 @@
 }
 .fab:hover {
   color: #0ce;
+}
+.hats {
+  margin-left: 40px;
+  margin-top: 40px;
+  font-size: 70px;
+  font-family: Open Sans, sans-serif;
 }
 .intro-panel {
   position:absolute;
@@ -100,6 +114,13 @@
   background-color: #394053;
   color: white;
 }
+.profile-pic {
+/*  background-image: url('../background_pics/andrew.jpg');
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  background-size: cover;*/
+}
 /*.wrapper-about {
   overflow-x: hidden;
   overflow-y: visible;
@@ -107,6 +128,12 @@
   width: 100vw;
   max-width: 100%;
 }*/
+#role-names {
+  margin-left: 60px;
+  margin-top: -15px;
+  font-size: 350px;
+  font-family: Kaushan Script, cursive;
+}
 .wrapper-post {
   height: auto;
   padding-top: 25px;

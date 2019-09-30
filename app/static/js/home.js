@@ -86,8 +86,8 @@ $(document).ready(function() {
     $(".content-main").css("background-color", "transparent");
     //$(".background").css("background-image", this.style.backgroundImage);
     $(".background").css("opacity", 0.85);
-    $(".post-regular").css("opacity", 0.35);
-    this.style.opacity = 1;
+    // $(".post-regular").css("opacity", 0.35);
+    // this.style.opacity = 1;
     // $(this).children('.post-content')[0].style.left = 0 + 'px';
     //$(this).children('.darkener')[0].style.opacity = 0.3;
   });
@@ -121,10 +121,30 @@ $(document).ready(function() {
     30,
   ]
 
+  //setInterval(function() {
+    //$(".large-font").css("font-family", fonts[Math.floor(Math.random()*(fonts.length - 1))]);
+  //}, 1000);
+
+  $(".large-font").css("font-family", fonts[1]);
+
+  let roles = [
+    'Student',
+    'Developer',
+    'Writer',
+    'Artist',
+    'Gamer',
+    'Learner',
+    'Intern',
+    'Leader',
+    'Teacher',
+  ];
+
+  let t = 0;
   setInterval(function() {
-    $(".large-font").css("font-family", fonts[Math.floor(Math.random()*(fonts.length - 1))]);
-  }, 1000);
-  
+    $("#role-names").text(roles[t % roles.length]);
+    $("#role-names").css("font-family", fonts[Math.floor(Math.random()*(fonts.length - 1))]);
+    t++;
+  }, 1000)
 
   $('.post-content').each(function() {
     this.style.fontFamily = fonts[Math.floor(Math.random()*(fonts.length - 1))];
@@ -215,5 +235,24 @@ $(document).ready(function() {
     });
     $('.content-main').append($circle);
   }
+
+  $("#start-reading").on("click", function() {
+    window.scroll({
+      top: window.innerHeight,
+      left: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  let toggle = false;
+  $("#about-me-button").on("click", function() {
+    if (!toggle) {
+      $(".about-me").css("transform", "translate(-16px, 0)");
+      toggle = true;
+    } else {
+      $(".about-me").css("transform", "translate(100%, 0)");
+      toggle = false;
+    }
+  });
 
 });
